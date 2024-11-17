@@ -9,6 +9,7 @@ export default function SearchBar() {
         className="w-full h-full bg-transparent focus:outline-none  "
         placeholder="Search for notes"
         type="search"
+        d
       ></input>
     </div>
   );
