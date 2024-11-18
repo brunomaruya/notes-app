@@ -2,7 +2,7 @@ import React from "react";
 
 function NoteCard({ header, body }) {
   return (
-    <div className="bg-[#d9e8fc] rounded-2xl p-5 mb-3 overflow-hidden">
+    <div className="bg-[#d9e8fc] rounded-2xl p-5 mb-3 overflow-hidden cursor-pointer">
       <h1>{header}</h1>
       <p className="text-sm ">{body}</p>
     </div>
