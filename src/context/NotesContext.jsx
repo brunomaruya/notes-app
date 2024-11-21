@@ -19,7 +19,7 @@ export default function NotesProvider({ children }) {
   };
 
   return (
-    <NotesContext.Provider value={{ addNote }}>
+    <NotesContext.Provider value={{ addNote, notes, note, setNotes, setNote }}>
       {children}
     </NotesContext.Provider>
   );

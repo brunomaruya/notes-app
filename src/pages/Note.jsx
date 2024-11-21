@@ -1,14 +1,35 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import Container from "../components/Container";
 import Header from "../components/Header";
+import { NotesContext } from "../context/NotesContext";
+import { useLocalStorage } from "@uidotdev/usehooks";
 
 export default function Note() {
+  const { notes, note, setNotes, setNote } = useContext(NotesContext);
   const { noteId } = useParams();
-  const [titleValue, setTitleValue] = useState("");
-  const [bodyValue, setBodyValue] = useState("");
+  const [titleValue, setTitleValue] = useLocalStorage("title", "");
+  const [bodyValue, setBodyValue] = useLocalStorage("body", "");
   const titleRef = useRef();
   const bodyRef = useRef();
+
+  const updateNote = (noteId, titleValue, bodyValue) => {
+    setNote({ noteId: noteId, titleValue: titleValue, bodyValue: bodyValue });
+
+    const updatedNotes = notes.map((note) => {
+      if (note.noteId === noteId) {
+        console.log(noteId + " updated");
+        return { ...note, title: titleValue, body: bodyValue };
+      }
+      return note;
+    });
+    setNotes(updatedNotes);
+  };
+
+  useEffect(() => {
+    updateNote(noteId, titleValue, bodyValue);
+  }, [titleValue, bodyValue]);
+
   const handleTitleInput = (e) => {
     const textarea = e.target;
     textarea.style.height = "auto";
