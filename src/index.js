@@ -8,9 +8,7 @@ import NotesProvider from "./context/NotesContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <NotesProvider>
-      <App />
-    </NotesProvider>
+    <App />
   </React.StrictMode>
 );
 

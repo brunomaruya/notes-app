@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import Container from "../components/Container";
+import Header from "../components/Header";
 
 export default function Note() {
   const { noteId } = useParams();
@@ -29,13 +30,13 @@ export default function Note() {
   };
   return (
     <Container>
-      <header></header>
+      <Header />
       <textarea
         onKeyDown={(e) => handleKeyDown(e, bodyRef)}
         rows="1"
         onChange={handleTitleInput}
         autoFocus
-        className="text-2xl   font-bold focus:outline-none  "
+        className="mt-16 text-2xl   font-bold focus:outline-none  "
         style={{ resize: "none", overflow: "hidden" }}
         value={titleValue}
         ref={titleRef}
@@ -43,8 +44,7 @@ export default function Note() {
       <textarea
         onChange={handleBodyInput}
         ref={bodyRef}
-        autoFocus
-        className="text-md  focus:outline-none  "
+        className="text-md h-full  focus:outline-none  "
         style={{ resize: "none", overflow: "hidden" }}
         value={bodyValue}
       />
